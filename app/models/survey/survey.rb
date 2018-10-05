@@ -4,8 +4,9 @@ class Survey::Survey < ActiveRecord::Base
 
   # relations
   has_many :attempts
-  has_many :sections
-  has_many :questions, inverse_of: :survey
+  has_many :sections,  inverse_of: :survey
+  has_many :questions, :through => :sections
+
 
   #rails 3 attr_accessible support
   if Rails::VERSION::MAJOR < 4
