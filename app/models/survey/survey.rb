@@ -5,6 +5,7 @@ class Survey::Survey < ActiveRecord::Base
   # relations
   has_many :attempts
   has_many :sections
+  has_many :questions, inverse_of: :survey
 
   #rails 3 attr_accessible support
   if Rails::VERSION::MAJOR < 4
@@ -12,6 +13,8 @@ class Survey::Survey < ActiveRecord::Base
   end
 
   accepts_nested_attributes_for :sections,
+    :reject_if => ->(q) { q[:name].blank? }, :allow_destroy => true
+  accepts_nested_attributes_for :questions,
     :reject_if => ->(q) { q[:name].blank? }, :allow_destroy => true
 
   scope :active, -> { where(:active => true) }
