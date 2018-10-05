@@ -5,6 +5,7 @@ class Survey::Question < ActiveRecord::Base
   has_many   :options, inverse_of: :question
   has_many   :predefined_values
   belongs_to :section
+  belongs_to :survey
   
   #rails 3 attr_accessible support
   if Rails::VERSION::MAJOR < 4
