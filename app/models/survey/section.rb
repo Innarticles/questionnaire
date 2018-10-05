@@ -4,6 +4,7 @@ class Survey::Section < ActiveRecord::Base
   
   # relations
   has_many :questions
+  belongs_to :survey
   
   #rails 3 attr_accessible support
   if Rails::VERSION::MAJOR < 4
