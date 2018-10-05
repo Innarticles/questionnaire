@@ -2,7 +2,7 @@ class Survey::Question < ActiveRecord::Base
 
   self.table_name = "survey_questions"
   # relations
-  has_many   :options, inverse_of: :survey_questions
+  has_many   :options, inverse_of: :questions
   has_many   :predefined_values
   belongs_to :section
   
